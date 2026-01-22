@@ -31,17 +31,17 @@ class MerchantAgentAclAccessChecker implements MerchantAgentAclAccessCheckerInte
     protected AclMerchantAgentConfig $aclMerchantAgentConfig;
 
     /**
-     * @var \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface
+     * @var \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface|null
      */
-    protected AuthorizationCheckerInterface $authorizationChecker;
+    protected ?AuthorizationCheckerInterface $authorizationChecker;
 
     /**
      * @param \Spryker\Zed\AclMerchantAgent\AclMerchantAgentConfig $aclMerchantAgentConfig
-     * @param \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface $authorizationChecker
+     * @param \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface|null $authorizationChecker
      */
     public function __construct(
         AclMerchantAgentConfig $aclMerchantAgentConfig,
-        AuthorizationCheckerInterface $authorizationChecker
+        ?AuthorizationCheckerInterface $authorizationChecker
     ) {
         $this->aclMerchantAgentConfig = $aclMerchantAgentConfig;
         $this->authorizationChecker = $authorizationChecker;
@@ -55,6 +55,10 @@ class MerchantAgentAclAccessChecker implements MerchantAgentAclAccessCheckerInte
      */
     public function isApplicable(UserTransfer $userTransfer, RuleTransfer $ruleTransfer): bool
     {
+        if ($this->authorizationChecker === null) {
+            return false;
+        }
+
         try {
             return $userTransfer->getIsMerchantAgent() === true
                 && $this->authorizationChecker->isGranted(static::ROLE_MERCHANT_AGENT);

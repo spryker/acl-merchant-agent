@@ -27,9 +27,9 @@ class AclMerchantAgentBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface
+     * @return \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface|null
      */
-    public function getAuthorizationCheckerService(): AuthorizationCheckerInterface
+    public function getAuthorizationCheckerService(): ?AuthorizationCheckerInterface
     {
         return $this->getProvidedDependency(AclMerchantAgentDependencyProvider::SERVICE_SECURITY_AUTHORIZATION_CHECKER);
     }
