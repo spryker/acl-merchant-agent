@@ -35,10 +35,6 @@ class MerchantAgentAclAccessChecker implements MerchantAgentAclAccessCheckerInte
      */
     protected ?AuthorizationCheckerInterface $authorizationChecker;
 
-    /**
-     * @param \Spryker\Zed\AclMerchantAgent\AclMerchantAgentConfig $aclMerchantAgentConfig
-     * @param \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface|null $authorizationChecker
-     */
     public function __construct(
         AclMerchantAgentConfig $aclMerchantAgentConfig,
         ?AuthorizationCheckerInterface $authorizationChecker
@@ -47,12 +43,6 @@ class MerchantAgentAclAccessChecker implements MerchantAgentAclAccessCheckerInte
         $this->authorizationChecker = $authorizationChecker;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserTransfer $userTransfer
-     * @param \Generated\Shared\Transfer\RuleTransfer $ruleTransfer
-     *
-     * @return bool
-     */
     public function isApplicable(UserTransfer $userTransfer, RuleTransfer $ruleTransfer): bool
     {
         if ($this->authorizationChecker === null) {
@@ -69,12 +59,6 @@ class MerchantAgentAclAccessChecker implements MerchantAgentAclAccessCheckerInte
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserTransfer $userTransfer
-     * @param \Generated\Shared\Transfer\RuleTransfer $ruleTransfer
-     *
-     * @return bool
-     */
     public function checkAccess(UserTransfer $userTransfer, RuleTransfer $ruleTransfer): bool
     {
         return in_array($ruleTransfer->getBundleOrFail(), $this->aclMerchantAgentConfig->getMerchantAgentAclBundleAllowedList());

@@ -35,9 +35,6 @@ class CheckMerchantAgentAclAccessTest extends Unit
      */
     protected AclMerchantAgentBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -45,9 +42,6 @@ class CheckMerchantAgentAclAccessTest extends Unit
         $this->tester->mockAuthorizationChecker();
     }
 
-    /**
-     * @return void
-     */
     public function testReturnsFalseWhenBundleIsNotListedInConfig(): void
     {
         // Arrange
@@ -64,9 +58,6 @@ class CheckMerchantAgentAclAccessTest extends Unit
         $this->assertFalse($isApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testReturnsTrueWhenBundleIsListedInConfig(): void
     {
         // Arrange

@@ -22,11 +22,6 @@ class AclMerchantAgentDependencyProvider extends AbstractBundleDependencyProvide
      */
     public const SERVICE_SECURITY_AUTHORIZATION_CHECKER = 'security.authorization_checker';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addAuthorizationCheckerService($container);
@@ -34,11 +29,6 @@ class AclMerchantAgentDependencyProvider extends AbstractBundleDependencyProvide
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addAuthorizationCheckerService(Container $container): Container
     {
         $container->set(static::SERVICE_SECURITY_AUTHORIZATION_CHECKER, function (Container $container) {

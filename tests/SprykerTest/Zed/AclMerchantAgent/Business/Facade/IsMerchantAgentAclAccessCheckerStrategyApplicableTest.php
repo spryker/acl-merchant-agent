@@ -30,9 +30,6 @@ class IsMerchantAgentAclAccessCheckerStrategyApplicableTest extends Unit
      */
     protected AclMerchantAgentBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testReturnsTrue(): void
     {
         // Arrange
@@ -50,9 +47,6 @@ class IsMerchantAgentAclAccessCheckerStrategyApplicableTest extends Unit
         $this->assertTrue($isApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testReturnsFalseWhenUserIsNotMerchantAgent(): void
     {
         // Arrange
@@ -70,9 +64,6 @@ class IsMerchantAgentAclAccessCheckerStrategyApplicableTest extends Unit
         $this->assertFalse($isApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testReturnsFalseWhenMerchantAgentAccessIsNotGranted(): void
     {
         // Arrange
@@ -90,9 +81,6 @@ class IsMerchantAgentAclAccessCheckerStrategyApplicableTest extends Unit
         $this->assertFalse($isApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testReturnsFalseWhenExceptionIsThrown(): void
     {
         // Arrange

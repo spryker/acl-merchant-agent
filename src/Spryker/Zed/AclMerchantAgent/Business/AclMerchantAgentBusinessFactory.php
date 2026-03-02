@@ -18,17 +18,11 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
  */
 class AclMerchantAgentBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\AclMerchantAgent\Business\Checker\MerchantAgentAclAccessCheckerInterface
-     */
     public function createMerchantAgentAclAccessChecker(): MerchantAgentAclAccessCheckerInterface
     {
         return new MerchantAgentAclAccessChecker($this->getConfig(), $this->getAuthorizationCheckerService());
     }
 
-    /**
-     * @return \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface|null
-     */
     public function getAuthorizationCheckerService(): ?AuthorizationCheckerInterface
     {
         return $this->getProvidedDependency(AclMerchantAgentDependencyProvider::SERVICE_SECURITY_AUTHORIZATION_CHECKER);

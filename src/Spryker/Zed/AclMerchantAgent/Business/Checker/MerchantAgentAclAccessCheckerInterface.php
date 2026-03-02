@@ -12,19 +12,7 @@ use Generated\Shared\Transfer\UserTransfer;
 
 interface MerchantAgentAclAccessCheckerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\UserTransfer $userTransfer
-     * @param \Generated\Shared\Transfer\RuleTransfer $ruleTransfer
-     *
-     * @return bool
-     */
     public function isApplicable(UserTransfer $userTransfer, RuleTransfer $ruleTransfer): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\UserTransfer $userTransfer
-     * @param \Generated\Shared\Transfer\RuleTransfer $ruleTransfer
-     *
-     * @return bool
-     */
     public function checkAccess(UserTransfer $userTransfer, RuleTransfer $ruleTransfer): bool;
 }

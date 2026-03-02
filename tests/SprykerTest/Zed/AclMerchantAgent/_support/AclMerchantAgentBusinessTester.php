@@ -36,12 +36,6 @@ class AclMerchantAgentBusinessTester extends Actor
 {
     use _generated\AclMerchantAgentBusinessTesterActions;
 
-    /**
-     * @param bool $isGranted
-     * @param bool $isExceptionThrown
-     *
-     * @return void
-     */
     public function mockAuthorizationChecker(bool $isGranted = true, bool $isExceptionThrown = false): void
     {
         $authorizationCheckerMock = Stub::makeEmpty(
